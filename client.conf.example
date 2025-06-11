@@ -1,0 +1,10 @@
+[Interface]
+PrivateKey = [클라이언트 프라이빗 키]
+Address = 10.0.0.2/24
+DNS = 1.1.1.1 8.8.8.8
+
+[Peer]
+PublicKey = [서버 퍼블릭 키]
+Endpoint = [EC2 퍼블릭 IP]:51820
+AllowedIPs = 0.0.0.0/0
+PersistentKeepalive = 25
