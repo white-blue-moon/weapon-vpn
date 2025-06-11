@@ -86,8 +86,15 @@ def run_gui():
     disconnect_button = tk.Button(frame, text="VPN 연결 종료", width=25, command=disconnect_vpn, bg="tomato")
     disconnect_button.pack(pady=5)
 
-    # 상태 표시
-    status_label = tk.Label(root, text=check_vpn_status(), anchor='w', bg='lightgrey', padx=10)
+    # 상태 표시 (가운데 정렬)
+    status_label = tk.Label(
+        root,
+        text=check_vpn_status(),
+        anchor='center',
+        justify='center',
+        bg='lightgrey',
+        padx=10
+    )
     status_label.pack(fill=tk.X, side=tk.BOTTOM, ipady=5)
 
     root.mainloop()
