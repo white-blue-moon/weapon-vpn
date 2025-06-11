@@ -57,6 +57,11 @@ def update_status():
     status = check_vpn_status()
     status_label.config(text=status)
 
+    if "연결됨" in status:
+        status_label.config(bg='lightgreen', fg='darkgreen')
+    else:
+        status_label.config(bg='lightgrey', fg='dimgray')
+
 def show_result(title, output, error, returncode):
     if returncode == 0:
         messagebox.showinfo(title, output or "성공적으로 실행되었습니다.")
@@ -86,17 +91,17 @@ def run_gui():
     disconnect_button = tk.Button(frame, text="VPN 연결 종료", width=25, command=disconnect_vpn, bg="tomato")
     disconnect_button.pack(pady=5)
 
-    # 상태 표시 (가운데 정렬)
+    # 상태 표시 (초기 값, 색상은 update_status에서 설정됨)
     status_label = tk.Label(
         root,
-        text=check_vpn_status(),
+        text="",
         anchor='center',
         justify='center',
-        bg='lightgrey',
-        padx=10
+        font=("Arial", 11, "bold")
     )
     status_label.pack(fill=tk.X, side=tk.BOTTOM, ipady=5)
 
+    update_status()  # 초기 상태 설정
     root.mainloop()
 
 if __name__ == "__main__":
